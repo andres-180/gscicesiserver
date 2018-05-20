@@ -12,9 +12,9 @@ class ApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return "Hello world";
+        return "Nombre del que hace el request: ". $request -> nombre . "\nApellido del que hace el request: " . $request->apellido;
     }
 
     /**
