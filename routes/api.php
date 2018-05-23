@@ -16,5 +16,4 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('sessions', ['middleware' => 'auth:api', 'uses' => 'Api\ApiController@index']);
+Route::post('sessions', ['middleware' => 'auth:api', 'uses' => 'Api\ApiController@index']);
