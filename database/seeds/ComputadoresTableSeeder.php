@@ -24,6 +24,7 @@ class ComputadoresTableSeeder extends Seeder
                 'idComputador' => $idComputadores[$i],
                 'sala_id' => 1,
                 'estado' => 'disponible',
+                'last_connection' => \Carbon\Carbon::now(),
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
             ]);
