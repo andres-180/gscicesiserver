@@ -13,9 +13,9 @@ class CreateComputadorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('computadors', function (Blueprint $table) {
+        Schema::create('computadores', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('idComputador')->unique();
+            $table->string('idComputador', '60')->unique();
             $table->unsignedInteger('sala_id');
             $table->foreign('sala_id')->references('id')->on('salas');
             $table->timestamps();
