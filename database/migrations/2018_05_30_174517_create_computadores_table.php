@@ -17,6 +17,7 @@ class CreateComputadoresTable extends Migration
             $table->increments('id');
             $table->string('idComputador', 60)->unique();
             $table->unsignedInteger('sala_id');
+            $table->string('estado', 60);
             $table->foreign('sala_id')->references('id')->on('salas');
             $table->timestamps();
         });
