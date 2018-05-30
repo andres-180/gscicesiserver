@@ -18,17 +18,11 @@ class ApiController extends Controller
     {
         $idsala = $request -> idsala;
         $idpc = $request -> idpc;
-        $fecha = $request -> fecha;
+        $fecha = \Carbon\Carbon::now();
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', '=', $idpc],
-        ])->first();
-
-        if (!is_null($computador))
-        {
-            $computador -> last_connection = \Carbon\Carbon::now();
-            $computador -> save();
-        }
+        ])->update(['last_connection' => $fecha]);
 
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
