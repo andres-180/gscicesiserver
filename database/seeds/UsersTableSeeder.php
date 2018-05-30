@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
         ];
         for ($i = 0; $i < $cantidad; $i++) {
             DB::table('users')->insert([
-                'nombre' => $nombres[$i],
+                'name' => $nombres[$i],
                 'email' => $emails[$i],
                 'api_token' => $api_tokens[$i],
                 'password' => $passwords[$i],
