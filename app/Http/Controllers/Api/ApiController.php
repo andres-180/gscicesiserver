@@ -22,7 +22,7 @@ class ApiController extends Controller
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', 'LIKE', $idpc],
-        ]);
+        ])->first();
         //$computador -> last_connection = \Carbon\Carbon::now();
         //$computador -> save();
 
