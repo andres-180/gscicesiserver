@@ -21,9 +21,16 @@ class ApiController extends Controller
         $fecha = $request -> fecha;
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
-            ['idComputador', '=', $idpc],
+            ['idComputador', 'LIKE', $idpc],
         ])->get();
-
-        return "Estado computador: " .$computador -> estado . "\nFecha: " . $fecha;
+        if(is_null($computador))
+        {
+            return "El computador no existe";
+        }
+        else
+        {
+            return "El computador si existe";
+        }
+        //return "Estado computador: " .$computador -> estado . "\nFecha: " . $fecha;
     }
 }
