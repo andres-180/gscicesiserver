@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Models\Computador;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
+use Illuminate\Support\Facades\Response;
 
 class ApiController extends Controller
 {
@@ -39,6 +39,6 @@ class ApiController extends Controller
     public function actualizarEstados()
     {
         $computadores = Computador::all();
-        return  Response::json("Prueba exitosa", 200);
+        return Response::json($computadores, 200);
     }
 }
