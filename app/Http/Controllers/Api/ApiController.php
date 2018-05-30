@@ -23,17 +23,19 @@ class ApiController extends Controller
             ['sala_id', '=', $idsala],
             ['idComputador', '=', $idpc],
         ])->first();
-        //$computador -> last_connection = \Carbon\Carbon::now();
-        //$computador -> save();
 
-        if (is_null($computador -> estado))
+        if (!is_null($computador))
         {
-            return "El estado es nullo";
+            $computador -> last_connection = \Carbon\Carbon::now();
+            $computador -> save();
         }
-        else
-        {
-            return "El estado es: ". $computador -> estado;
-        }
+
+        $computador = DB::table('computadores')->where([
+            ['sala_id', '=', $idsala],
+            ['idComputador', '=', $idpc],
+        ])->first();
+
+        return $computador -> last_connection;
 
     }
 }
