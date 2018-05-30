@@ -45,16 +45,12 @@ class ApiController extends Controller
             $fechaComputador = $computador -> last_connecction;
             $fechaActual = Carbon::now();
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
-            $computador = DB::table('computadores')->where([
-                ['sala_id', '=', $computador -> sala_id],
-                ['idComputador', '=', $computador -> idComputador],
-            ])->update(['estado' => "disponible"]);
+            $computador -> estado = "disponible";
+            $computador -> save();
             if($diferencia > 10)
             {
-                $computador = DB::table('computadores')->where([
-                    ['sala_id', '=', $computador -> sala_id],
-                    ['idComputador', '=', $computador -> idComputador],
-                ])->update(['estado' => "disponible"]);
+                $computador -> estado = "disponible";
+                $computador -> save();
             }
         }
         return Response::json($computadores, 200);
