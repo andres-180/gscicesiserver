@@ -39,7 +39,6 @@ class ApiController extends Controller
     public function actualizarEstados()
     {
         $computadores = Computador::all();
-        //Response::json($computadores, 200)
-        return "hola que hace";
+        return  Response::json($computadores, 200);
     }
 }
