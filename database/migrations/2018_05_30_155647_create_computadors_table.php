@@ -15,6 +15,7 @@ class CreateComputadorsTable extends Migration
     {
         Schema::create('computadors', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('idComputador')->unique();
             $table->unsignedInteger('sala_id');
             $table->foreign('sala_id')->references('id')->on('salas');
             $table->timestamps();
