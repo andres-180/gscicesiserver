@@ -45,7 +45,7 @@ class ApiController extends Controller
             $fechaComputador = $computador -> last_connecction;
             $fechaActual = Carbon::now();
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
-            if($diferencia > 30)
+            if($diferencia > 10)
             {
                 $computador -> estado = "disponible";
                 $computador -> save();
