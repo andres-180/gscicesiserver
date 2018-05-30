@@ -23,6 +23,13 @@ class ApiController extends Controller
             ['sala_id', '=', $idsala],
             ['idComputador', 'LIKE', $idpc],
         ])->get();
-        return "Estado computador: " .$computador -> estado . "\nFecha: " . $fecha;
+        $computador -> last_connection = \Carbon\Carbon::now();
+        $computador -> save();
+
+        $computador = DB::table('computadores')->where([
+            ['sala_id', '=', $idsala],
+            ['idComputador', 'LIKE', $idpc],
+        ])->get();
+        return "Estado computador: " .$computador -> estado . "\nFecha: " . $computador -> last_connection;
     }
 }
