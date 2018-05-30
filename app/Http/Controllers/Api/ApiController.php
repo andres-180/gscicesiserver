@@ -28,6 +28,7 @@ class ApiController extends Controller
 
         if (is_null($computador))
         {
+            $estado = $computador -> estado;
             return "el computador si es nullo";
         }
         else
