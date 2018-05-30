@@ -23,14 +23,6 @@ class ApiController extends Controller
             ['sala_id', '=', $idsala],
             ['idComputador', 'LIKE', $idpc],
         ])->get();
-        if(is_null($computador))
-        {
-            return "El computador no existe";
-        }
-        else
-        {
-            return "El computador si existe";
-        }
-        //return "Estado computador: " .$computador -> estado . "\nFecha: " . $fecha;
+        return "Estado computador: " .$computador -> estado . "\nFecha: " . $fecha;
     }
 }

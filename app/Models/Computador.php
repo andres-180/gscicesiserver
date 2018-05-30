@@ -8,7 +8,7 @@ class Computador extends Model
 {
     protected $table = 'computadores';
 
-    protected $fillable = ['idComputador', 'sala_id', 'estado'];
+    protected $fillable = ['idComputador', 'sala_id', 'estado', 'last_connection'];
 
     public function sala()
     {
