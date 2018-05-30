@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -18,6 +19,11 @@ class ApiController extends Controller
         $idsala = $request -> idsala;
         $idpc = $request -> idpc;
         $fecha = $request -> fecha;
-        return "Identificación sala: " . $idsala . "\nIdentificación PC: " . $idpc . "\nFecha actual: " . $fecha;
+        $computador = DB::table('computadores')->where([
+            ['sala_id', '=', $idsala],
+            ['idComputador', '=', $idpc],
+        ])->get();
+
+        return "Estado computador: " .$computador -> estado . "\nFecha: " . $fecha;
     }
 }
