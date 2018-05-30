@@ -23,9 +23,17 @@ class ApiController extends Controller
             ['sala_id', '=', $idsala],
             ['idComputador', 'LIKE', $idpc],
         ]);
+        //$computador -> last_connection = \Carbon\Carbon::now();
+        //$computador -> save();
 
-        $estado = $computador -> estado;
+        if (is_null($computador))
+        {
+            return "el computador si es nullo";
+        }
+        else
+        {
+            return "el computador no es nullo";
+        }
 
-        return $computador;
     }
 }
