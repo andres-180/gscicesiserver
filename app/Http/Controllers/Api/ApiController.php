@@ -29,11 +29,11 @@ class ApiController extends Controller
         if (is_null($computador))
         {
             $estado = $computador -> estado;
-            return "El estado es: ". $estado;
+            return "El estado es nullo";
         }
         else
         {
-            return "el computador no es nullo";
+            return "El estado es: ". $estado;
         }
 
     }
