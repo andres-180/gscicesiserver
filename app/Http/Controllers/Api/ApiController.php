@@ -18,6 +18,6 @@ class ApiController extends Controller
         $idsala = $request -> idsala;
         $idpc = $request -> idpc;
         $fecha = $request -> fecha;
-        return "Identificación sala: " . $idsala . "\n Identificación PC: " . $idpc . "\n Fecha actual: " . $fecha;
+        return "Identificación sala: " . $idsala . "\nIdentificación PC: " . $idpc . "\nFecha actual: " . $fecha;
     }
 }
