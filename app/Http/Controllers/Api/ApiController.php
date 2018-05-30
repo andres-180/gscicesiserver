@@ -21,19 +21,18 @@ class ApiController extends Controller
         $fecha = $request -> fecha;
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
-            ['idComputador', 'LIKE', $idpc],
+            ['idComputador', '=', $idpc],
         ])->first();
         //$computador -> last_connection = \Carbon\Carbon::now();
         //$computador -> save();
 
-        if (is_null($computador))
+        if (is_null($computador -> estado))
         {
-            $estado = $computador -> estado;
             return "El estado es nullo";
         }
         else
         {
-            return "El estado es: ". $estado;
+            return "El estado es: ". $computador -> estado;
         }
 
     }
