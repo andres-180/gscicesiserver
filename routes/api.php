@@ -22,5 +22,5 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:api'], function () {
 });
 
 Route::group(['prefix' => 'get', 'middleware' => 'auth:api'], function () {
-    Route::get('sessions', ['uses' => 'Api\ApiController@actualizarFechaComputador']);
+    Route::get('updatedates', ['uses' => 'Api\ApiController@actualizarEstados']);
 });

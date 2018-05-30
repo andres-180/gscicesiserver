@@ -32,4 +32,9 @@ class ApiController extends Controller
         return $computador -> last_connection;
 
     }
+
+    public function actualizarEstados()
+    {
+        print "Si funciona";
+    }
 }
