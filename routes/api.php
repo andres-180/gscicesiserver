@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('sessions', ['middleware' => 'auth:api', 'uses' => 'Api\ApiController@actualizarFechaComputador']);
+Route::group(['prefix' => 'post', 'middleware' => 'auth:api'], function () {
+    Route::post('sessions', ['uses' => 'Api\ApiController@actualizarFechaComputador']);
+});
 
-Route::get('sessions2', ['middleware' => 'auth:api', 'uses' => 'Api\ApiController@actualizarFechaComputador']);
+Route::group(['prefix' => 'get', 'middleware' => 'auth:api'], function () {
+    Route::get('sessions', ['uses' => 'Api\ApiController@actualizarFechaComputador']);
+});
