@@ -30,6 +30,9 @@ class ApiController extends Controller
             ['sala_id', '=', $idsala],
             ['idComputador', 'LIKE', $idpc],
         ])->get();
-        return "Estado computador: " .$computador -> estado . "\nFecha: " . $computador -> last_connection;
+
+        $fechaActual = $computador -> last_connection;
+        $estado = $computador -> estado;
+        return "Estado computador: " . $estado . "\nFecha: " . $fechaActual;
     }
 }
