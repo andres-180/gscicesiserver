@@ -50,7 +50,7 @@ class ApiController extends Controller
                 $computador = DB::table('computadores')->where([
                     ['sala_id', '=', $computador -> sala_id],
                     ['idComputador', '=', $computador -> idComputador],
-                ])->update(['estado' => "no disponible"]);
+                ])->update(['estado' => "disponible"]);
             }
         }
         return Response::json($computadores, 200);
