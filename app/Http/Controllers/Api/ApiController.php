@@ -26,8 +26,14 @@ class ApiController extends Controller
         //$computador -> last_connection = \Carbon\Carbon::now();
         //$computador -> save();
 
-
         $estado = $computador -> estado;
-        return $estado;
+        if (is_null($estado))
+        {
+            return "el estado no existe";
+        }
+        else
+        {
+            return "el estado si existe";
+        }
     }
 }
