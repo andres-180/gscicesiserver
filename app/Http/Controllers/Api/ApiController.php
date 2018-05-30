@@ -47,8 +47,10 @@ class ApiController extends Controller
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
             if($diferencia > 10)
             {
-                $computador -> estado = "disponible";
-                $computador -> save();
+                $computador = DB::table('computadores')->where([
+                    ['sala_id', '=', $computador -> sala_id],
+                    ['idComputador', '=', $computador -> idComputador],
+                ])->update(['estado' => "no disponible"]);
             }
         }
         return Response::json($computadores, 200);
