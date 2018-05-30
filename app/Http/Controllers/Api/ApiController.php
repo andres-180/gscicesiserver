@@ -26,7 +26,7 @@ class ApiController extends Controller
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', '=', $idpc],
-        ])->update(['last_connection' => $fecha, 'estado' => "disponible"]);
+        ])->update(['last_connection' => $fecha, 'estado' => "no disponible"]);
 
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
