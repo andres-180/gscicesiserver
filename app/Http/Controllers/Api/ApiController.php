@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
 use Illuminate\Support\Facades\Response;
+use Carbon\Carbon;
 
 class ApiController extends Controller
 {
@@ -21,7 +22,7 @@ class ApiController extends Controller
     {
         $idsala = $request -> idsala;
         $idpc = $request -> idpc;
-        $fecha = \Carbon\Carbon::now();
+        $fecha = Carbon::now();
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', '=', $idpc],
@@ -39,6 +40,17 @@ class ApiController extends Controller
     public function actualizarEstados()
     {
         $computadores = Computador::all();
+        foreach ($computadores as $computador)
+        {
+            $fechaComputador = $computador -> last_connecction;
+            $fechaActual = Carbon::now();
+            $diferencia = $fechaActual->diffInSeconds($fechaComputador);
+            if($diferencia > 30)
+            {
+                $computador -> estado = "disponible";
+                $computador -> save();
+            }
+        }
         return Response::json($computadores, 200);
     }
 }
