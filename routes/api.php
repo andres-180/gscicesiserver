@@ -19,8 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'post', 'middleware' => 'auth:api'], function () {
     Route::post('sessions', ['uses' => 'Api\ApiController@actualizarFechaComputador']);
+    Route::post('updatestates', ['uses' => 'Api\ApiController@actualizarEstados']);
 });
 
 Route::group(['prefix' => 'get', 'middleware' => 'auth:api'], function () {
-    Route::get('updatedates', ['uses' => 'Api\ApiController@actualizarEstados']);
+
 });
