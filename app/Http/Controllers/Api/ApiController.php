@@ -22,9 +22,9 @@ class ApiController extends Controller
         $computador = DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', 'LIKE', $idpc],
-        ])->get();
-        //$computador -> last_connection = \Carbon\Carbon::now();
-        //$computador -> save();
+        ]);
+
+        $estado = $computador -> estado;
 
         return $computador;
     }
