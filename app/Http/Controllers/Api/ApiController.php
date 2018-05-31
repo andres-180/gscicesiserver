@@ -51,6 +51,6 @@ class ApiController extends Controller
                 $computador -> save();
             }
         }
-        return Response::json($computador, 200);
+        return Response::json($computadores, 200);
     }
 }
