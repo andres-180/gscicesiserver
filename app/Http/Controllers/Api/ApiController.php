@@ -34,7 +34,6 @@ class ApiController extends Controller
         ])->first();
 
         return $computador -> last_connection;
-
     }
 
     public function actualizarEstados()
