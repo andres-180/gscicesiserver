@@ -41,10 +41,10 @@ class ApiController extends Controller
     {
         $computadores = Computador::all();
         $arreglo = array("dummy");
-        $fechaActual = Carbon::now();
+        $fechaActual = Carbon::now()->timestamp;
         foreach ($computadores as $computador)
         {
-            $fechaComputador = Carbon::createFromTimestamp($computador -> last_connecction);
+            $fechaComputador = $computador -> last_connection;
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
             array_push($arreglo, $diferencia);
             if($diferencia > 10)
