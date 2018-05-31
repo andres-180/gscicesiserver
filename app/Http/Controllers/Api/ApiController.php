@@ -46,6 +46,7 @@ class ApiController extends Controller
         {
             $fechaComputador = Carbon::createFromTimestamp($computador -> last_connection);
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
+            $cadena = $cadena . "|Fecha sistema: " . $fechaActual . " Fecha base de datos:" . $fechaComputador ."\n |";
             if($diferencia > 10)
             {
                 $computador -> estado = "disponible";
