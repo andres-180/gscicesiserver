@@ -23,17 +23,12 @@ class ApiController extends Controller
         $idsala = $request -> idsala;
         $idpc = $request -> idpc;
         $fecha = Carbon::now();
-        $computador = DB::table('computadores')->where([
+        DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', '=', $idpc],
         ])->update(['last_connection' => $fecha, 'estado' => "no disponible"]);
 
-        $computador = DB::table('computadores')->where([
-            ['sala_id', '=', $idsala],
-            ['idComputador', '=', $idpc],
-        ])->first();
-
-        return $computador -> last_connection;
+        return $fecha;
     }
 
     public function actualizarEstados()
@@ -50,6 +45,13 @@ class ApiController extends Controller
                 $computador -> save();
             }
         }
+        return Response::json($computadores, 200);
+    }
+
+    public function obtenerComputadores(Request $request)
+    {
+        $idSala = $request -> idSala;
+        $computadores = DB::table('computadores')->where([['sala_id', '=', $idSala],]);
         return Response::json($computadores, 200);
     }
 }
