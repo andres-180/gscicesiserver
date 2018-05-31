@@ -54,4 +54,10 @@ class ApiController extends Controller
         $computadores = DB::table('computadores')->where([['sala_id', '=', $idSala],]);
         return Response::json($computadores, 200);
     }
+    
+    public function getpcstotales()
+    {
+        $computadores=Computador::all();
+        return Response::json($computadores, 200);
+    }
 }
