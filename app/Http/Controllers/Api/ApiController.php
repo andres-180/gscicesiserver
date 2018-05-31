@@ -43,7 +43,7 @@ class ApiController extends Controller
         $arreglo = array("dummy");
         foreach ($computadores as $computador)
         {
-            $fechaComputador = $computador -> last_connecction;
+            $fechaComputador = Carbon::createFromDate($computador -> last_connecction);
             $fechaActual = Carbon::now();
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
             array_push($arreglo, $diferencia);
