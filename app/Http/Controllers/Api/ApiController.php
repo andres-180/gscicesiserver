@@ -40,7 +40,7 @@ class ApiController extends Controller
     public function actualizarEstados()
     {
         $computadores = Computador::all();
-        $arreglo = array(1);
+        $arreglo = array("dummy");
         $fechaActual = Carbon::now();
         foreach ($computadores as $computador)
         {
