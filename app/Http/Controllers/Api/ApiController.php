@@ -45,7 +45,7 @@ class ApiController extends Controller
         {
             $fechaComputador = $computador -> last_connection;
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
-            if($diferencia > 15)
+            if($diferencia > 25)
             {
                 $computador -> estado = "disponible";
                 $computador -> save();
