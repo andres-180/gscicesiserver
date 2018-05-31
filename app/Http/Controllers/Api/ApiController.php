@@ -40,19 +40,18 @@ class ApiController extends Controller
     public function actualizarEstados()
     {
         $computadores = Computador::all();
-        $arreglo = array("dummy");
+        $cadena = "";
         $fechaActual = Carbon::now();
         foreach ($computadores as $computador)
         {
-            $fechaComputador = $computador -> last_connecction;
+            $fechaComputador = Carbon::createFromTimestamp($computador -> last_connection);
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
-            array_push($arreglo, $diferencia);
             if($diferencia > 10)
             {
                 $computador -> estado = "disponible";
                 $computador -> save();
             }
         }
-        return Response::json($arreglo, 200);
+        return $cadena;
     }
 }
